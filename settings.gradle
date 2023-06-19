@@ -1,0 +1,6 @@
+rootProject.name = 'BrickGroups'
+
+include 'api'
+include 'common'
+include 'spigot'
+include 'spigot-api'

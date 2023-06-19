@@ -1,0 +1,13 @@
+plugins {
+    id 'java-library'
+}
+
+dependencies {
+    api 'com.guflimc.brick.orm:api:+'
+    api 'net.kyori:adventure-api:4.+'
+    implementation 'net.kyori:adventure-text-serializer-gson:4.+'
+    implementation 'net.kyori:adventure-text-serializer-plain:4.+'
+
+
+//    compileOnly 'com.guflimc.brick.i18n:api:+'
+}

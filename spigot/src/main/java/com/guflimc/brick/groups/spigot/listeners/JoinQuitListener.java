@@ -1,0 +1,32 @@
+package com.guflimc.brick.groups.spigot.listeners;
+
+import com.guflimc.brick.groups.spigot.SpigotClans;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerPreLoginEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
+
+public class JoinQuitListener implements Listener {
+
+    private final SpigotClans plugin;
+
+    public JoinQuitListener(SpigotClans plugin) {
+        this.plugin = plugin;
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onLogin(AsyncPlayerPreLoginEvent event) {
+        if (event.getLoginResult() != AsyncPlayerPreLoginEvent.Result.ALLOWED) {
+            return;
+        }
+
+        plugin.clanManager.login(event.getUniqueId(), event.getName()).join();
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR)
+    public void onQuit(PlayerQuitEvent event) {
+        plugin.clanManager.logout(event.getPlayer().getUniqueId());
+    }
+
+}
